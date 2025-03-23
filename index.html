@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather and AQI App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="script.js"> </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="m-0 p-0 box-sizing:border-box font-poppins bg-[#060C1A]">
+
+
+    <main class="main w-[100vw] h-[100vh] flex justify-between px-7 poppins overflow-hidden main-text">
+
+        <nav
+            class="nav flex justify-between w-22 flex-col p-5 items-center rounded-3xl mt-5 h-[95vh] bg-secondary mr-5">
+
+            <div class="upper-nav-content flex flex-col items-center justify-between h-30 ">
+
+
+                <div class="nav-logo align-center flex items-center justify-center flex-col gap-2">
+                    <img class="w-15 invert sepia saturate-[5000%] hue-rotate-[250deg]" src="assets/img/logo.png"
+                        alt="logo">
+                    <h2 class="text-sm tracking-tighter "> Freshcast</h2>
+                </div>
+
+                <div class="nav-menu mt-15 flex flex-col gap-10  items-center">
+
+                    <a class="group">
+                        <svg width="26" height="25" viewBox="0 0 26 25" fill="currentColor"
+                            class="text-[#676B73] hover:text-[#742BEC]" <!-- Default and hover colors -->
+                            xmlns="http://www.w3.org/2000/svg"
+                            >
+                            <path
+                                d="M0.5 23.6111V1.38889C0.5 1.02053 0.646329 0.667263 0.906796 0.406796C1.16726 0.146329 1.52053 0 1.88889 0H11.6111V25H1.88889C1.52053 25 1.16726 24.8537 0.906796 24.5932C0.646329 24.3327 0.5 23.9795 0.5 23.6111ZM25.5 23.6111V13.8889H14.3889V25H24.1111C24.4795 25 24.8327 24.8537 25.0932 24.5932C25.3537 24.3327 25.5 23.9795 25.5 23.6111ZM25.5 1.38889C25.5 1.02053 25.3537 0.667263 25.0932 0.406796C24.8327 0.146329 24.4795 0 24.1111 0H14.3889V11.1111H25.5V1.38889Z" />
+                        </svg>
+                    </a>
+
+                    <a class="group">
+                        <svg width="33" height="30" viewBox="0 0 33 30" fill="currentColor"
+                            class="text-[#676B73] hover:text-[#742BEC]" <!-- Default and hover colors -->
+                            xmlns="http://www.w3.org/2000/svg"
+                            >
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M18.2778 0V13.3333H32.5C32.5 5.97 26.132 0 18.2778 0ZM14.7222 16.6667H28.9444C28.9444 24.03 22.5764 30 14.7222 30C6.868 30 0.5 24.03 0.5 16.6667C0.5 9.30333 6.868 3.33333 14.7222 3.33333V16.6667Z" />
+                        </svg>
+                    </a>
+
+                    <a class="group">
+                        <svg width="34" height="41" viewBox="0 0 34 41" fill="currentColor"
+                            class="text-[#676B73] hover:text-[#742BEC]" <!-- Default and hover colors -->
+                            xmlns="http://www.w3.org/2000/svg"
+                            >
+                            <g filter="url(#filter0_d_13_224)">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M17.125 9.28125C15.4162 9.28125 14.0312 10.6662 14.0312 12.375C14.0312 14.0838 15.4162 15.4687 17.125 15.4687C18.8338 15.4687 20.2187 14.0838 20.2187 12.375C20.2187 10.6662 18.8338 9.28125 17.125 9.28125ZM17.125 17.5312C14.2777 17.5312 11.9687 15.2233 11.9687 12.375C11.9687 9.52668 14.2777 7.21875 17.125 7.21875C19.9723 7.21875 22.2812 9.52668 22.2812 12.375C22.2812 15.2233 19.9723 17.5312 17.125 17.5312ZM17.125 0C10.2909 0 4.75 5.5409 4.75 12.375C4.75 17.5498 15.0677 33.0113 17.125 33C19.1504 33.0113 29.5 17.4797 29.5 12.375C29.5 5.5409 23.9591 0 17.125 0Z" />
+                            </g>
+                            <defs>
+                                <filter id="filter0_d_13_224" x="0.75" y="0" width="32.75" height="41"
+                                    filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                    <feColorMatrix in="SourceAlpha" type="matrix"
+                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                    <feOffset dy="4" />
+                                    <feGaussianBlur stdDeviation="2" />
+                                    <feComposite in2="hardAlpha" operator="out" />
+                                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                                    <feBlend mode="normal" in2="BackgroundImageFix"
+                                        result="effect1_dropShadow_13_224" />
+                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_13_224"
+                                        result="shape" />
+                                </filter>
+                            </defs>
+                        </svg>
+                    </a>
+
+                    <a class="group">
+                        <svg width="28" height="27" viewBox="0 0 28 27" fill="currentColor"
+                            class="text-[#676B73] hover:text-[#742BEC]" <!-- Default and hover colors -->
+                            xmlns="http://www.w3.org/2000/svg"
+                            >
+                            <path
+                                d="M0.5 22.95C0.5 25.245 2.255 27 4.55 27H23.45C25.745 27 27.5 25.245 27.5 22.95V12.15H0.5V22.95ZM23.45 2.7H20.75V1.35C20.75 0.54 20.21 0 19.4 0C18.59 0 18.05 0.54 18.05 1.35V2.7H9.95V1.35C9.95 0.54 9.41 0 8.6 0C7.79 0 7.25 0.54 7.25 1.35V2.7H4.55C2.255 2.7 0.5 4.455 0.5 6.75V9.45H27.5V6.75C27.5 4.455 25.745 2.7 23.45 2.7Z" />
+                        </svg>
+                    </a>
+
+                    <a class="group">
+                        <svg width="27" height="24" viewBox="0 0 27 24" fill="currentColor"
+                            class="text-[#676B73] hover:text-[#742BEC]" <!-- Default and hover colors -->
+                            xmlns="http://www.w3.org/2000/svg"
+                            >
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M12.1911 1.50763C11.3548 0.18988 9.52461 -0.30068 8.08177 0.498918L5.93511 1.65057C4.35179 2.49912 3.81494 4.4018 4.71943 5.86942L4.72008 5.87046C5.18667 6.62514 5.11343 7.10723 4.96779 7.34417C4.82207 7.58124 4.41405 7.88168 3.48668 7.88168C1.66136 7.88168 0.188904 9.27976 0.188904 10.9733V13.0267C0.188904 14.7203 1.66136 16.1183 3.48668 16.1183C4.41405 16.1183 4.82207 16.4187 4.96779 16.6558C5.11343 16.8928 5.18667 17.3748 4.72008 18.1295L4.71943 18.1306C3.81494 19.5983 4.35229 21.5012 5.93562 22.3497L8.08188 23.5011C9.52471 24.3006 11.3548 23.8102 12.1911 22.4924L12.3336 22.2618C12.8002 21.507 13.2842 21.3246 13.5775 21.3246C13.8696 21.3246 14.3498 21.5055 14.8103 22.2585L14.8122 22.2618L14.9491 22.4834L14.9547 22.4924C15.791 23.8102 17.6211 24.3006 19.0639 23.5011L21.2107 22.3495C22.7951 21.5003 23.3286 19.6108 22.4286 18.1342L22.4258 18.1295C21.9591 17.3748 22.0324 16.8928 22.178 16.6558C22.3237 16.4187 22.7318 16.1183 23.6591 16.1183C25.4845 16.1183 26.9569 14.7203 26.9569 13.0267V10.9733C26.9569 9.2621 25.4656 7.88168 23.6591 7.88168C22.7318 7.88168 22.3237 7.58124 22.178 7.34417C22.0324 7.10723 21.9591 6.62514 22.4258 5.87046L22.4264 5.86942C23.331 4.40165 22.7939 2.49871 21.2102 1.6503L19.064 0.498918C17.6212 -0.30068 15.791 0.189833 14.9547 1.50759L14.8122 1.73827C14.3456 2.49301 13.8616 2.67543 13.5682 2.67543C13.2762 2.67543 12.796 2.49455 12.3356 1.74151L12.3336 1.73827L12.1967 1.51658L12.1911 1.50763ZM17.3 12C17.3 13.933 15.6286 15.5 13.5667 15.5C11.5048 15.5 9.83335 13.933 9.83335 12C9.83335 10.0669 11.5048 8.5 13.5667 8.5C15.6286 8.5 17.3 10.0669 17.3 12Z" />
+                        </svg>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="lower-nav-content flex flex-col gap-10 items-center ">
+                <a> <img src="assets/img/icons/Logout.png"> </a>
+                <div>
+                    <input type="checkbox" class="checkbox" id="checkbox">
+                    <label for="checkbox" class="checkbox-label">
+                        <i class="fas fa-moon text-sm">🌙</i>
+                        <i class="fas fa-sun text-sm">☀️</i>
+                        <span class="ball"></span>
+                    </label>
+                </div>
+
+
+            </div>
+        </nav>
+
+        <section class="middle-section mt-5">
+            <div class="search-container w-130 bg-secondary flex gap-3 py-3 rounded-3xl px-5">
+                <img class="w-5 cursor-pointer" onclick="toggleSearch()" src="assets/img/Search-icon.svg">
+                <input id="searchInput" class="  outline-none bg-transparent main-text" type="text"
+                    placeholder="Enter the city ..." name="city" onkeypress="handleSearch(event)">
+            </div>
+
+            <div class="weather mt-5 bg-secondary rounded-3xl h-[41vh] w-[45vw]">
+
+                <div class="weather-seperator flex justify-between py-7 px-10">
+
+                    <div class="weather-left flex flex-col justify-between rounded-3xl ">
+                        <div class="location inline-flex gap-2 rounded-3xl brand-color py-2 px-5 ">
+                            <img src="assets/img/location.svg">
+                            <h3 class="city" id="city"> Loading...</h3>
+                        </div>
+
+                        <div class="mt-7">
+                            <h1 class="text-4xl date" id="day">Monday</h1>
+                            <h2 class="date" id="full-date">20 Mar, 2025</h2>
+                        </div>
+
+
+
+
+                        <div class="mt-5">
+
+                            <h1 class="temp text-5xl "> <span id="temp">--</span>°C </h1>
+                           <div class="flex gap-2"> 
+                            <div class="flex gap-2"> 
+                                <p id="high-temp">High: -- °C</p>
+                                <p>|</p>
+                                <p id="low-temp">Low: -- °C</p>
+                            </div>
+                            
+                            
+                             </div> 
+                        </div>
+                    </div>
+
+                    <div class="weather-right flex flex-col items-end rounded-3xl">
+                        <div>
+                            <input type="checkbox" class="checkbox" id="tempToggle">
+                            <label for="tempToggle" class="checkbox-label">
+                                <i class="fa-moon">°C</i>
+                                <i class="fa-sun">°F</i>
+                                <span class="ball"></span>
+                            </label>
+                        </div>
+                        
+                        
+                        
+                        <div class="conta"> </div>
+                        <img id="icon" src="assets/img/cloud.png" class="weather-icon w-30 mt-4">
+                        <div class="mt-4 flex flex-col items-end">
+                            <h3 class="condition text-2xl" id="condition"> Loading.. </h3>
+                            <p class="text-sm"> Feels like 26 </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="mt-6 bg-secondary rounded-3xl p-5 w-[45vw]">
+                <h2 class="text-lg font-semibold">Week Forecast</h2>
+                <div id="weekly-forecast" class="flex gap-2 mt-4">
+                    <!-- Dynamic Daily Forecast Cards -->
+                    <!-- These will be populated dynamically with JS -->
+                </div>
+                <div class="mt-4 w-[30vw] bg-[#1e293b] p-4 rounded-lg flex gap-5">
+                    <div>
+                        <p class="text-sm">Sunrise</p>
+                        <p id="sunrise" class="text-3xl font-bold flex gap-2">--:--</p>
+                    </div>
+                    <div>
+                        <p class="text-sm">Sunset</p>
+                        <p id="sunset" class="text-3xl font-bold flex gap-2">--:--</p>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-sm">Length of day</p>
+                        <p id="day-length" class="text-3xl font-bold flex">--h <span> --min </span></p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!-- Right Section -->
+
+
+
+        </section>
+
+        <section class=" right-section ml-5">
+            <div class="flex justify-end">
+                <div class="search  mt-5  w-130 bg-secondary flex gap-3 py-3 rounded-3xl px-5">
+                    <img class="w-5" src="assets/img/Search-icon.svg">
+                    <input class="flex-1  outline-none bg-transparent main-text" type="text"
+                        placeholder="Enter the city ..." name="city">
+                </div>
+            </div>
+            <div class="AQI mt-5 bg-[radial-gradient(circle,_#162850,_#121A2D)] rounded-3xl p-5 h-[44vh] w-[43vw]">
+                <div id="speedometer">
+                    <div class="wrapper">
+                        <div class="indicator-wrapper">
+                            <div class="indicator-wrapper-inner">
+                                <div id="indicator"></div>
+                            </div>
+                        </div>
+
+                        <div class="bar bar-1"></div>
+                        <div class="bar bar-2"></div>
+                        <div class="bar bar-3"></div>
+                        <div class="bar bar-4"></div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="">
+                <h2 class=" tracking-tighter font-medium text-2xl mt-5 mb-3"> Other Cities</h2>
+                <div class="grid grid-cols-2 grid-rows-2 gap-3 ">
+                    <div class="bg-secondary h-[15vh] flex items-center justify-center rounded-3xl ">Div 1</div>
+                    <div class="bg-secondary h-[15vh] flex items-center justify-center rounded-3xl ">Div 2</div>
+                    <div class="bg-secondary h-[15vh] flex items-center justify-center rounded-3xl ">Div 3</div>
+                    <div class="bg-secondary h-[15vh] flex items-center justify-center rounded-3xl ">Div 4</div>
+                </div>
+            </section>
+
+        </section>
+
+    </main>
+
+    <script>
+        const checkbox = document.getElementById("checkbox")
+        checkbox.addEventListener("change", () => {
+            document.body.classList.toggle("dark")
+        })
+
+
+    </script>
+
+
+</body>
+
+</html>

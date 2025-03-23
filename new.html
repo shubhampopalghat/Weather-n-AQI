@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sun Data</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex justify-center items-center">
+
+<div class="mt-4 w-[45vw] bg-[#1e293b] p-4 rounded-lg flex gap-5">
+    <div>
+        <p class="text-sm">Sunrise</p>
+        <p id="sunrise" class="text-3xl font-bold flex gap-2">--:--</p>
+    </div>
+    <div>
+        <p class="text-sm">Sunset</p>
+        <p id="sunset" class="text-3xl font-bold flex gap-2">--:--</p>
+    </div>
+    <div class="flex flex-col">
+        <p class="text-sm">Length of day</p>
+        <p id="day-length" class="text-3xl font-bold flex">--h <span> --min </span></p>
+    </div>
+</div>
+
+<script > window.onload = () => {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            position => {
+                const { latitude, longitude } = position.coords;
+                fetchWeatherByLocation(latitude, longitude);
+            },
+            () => console.error("Location access denied")
+        );
+    } else {
+        console.error("Geolocation not supported");
+    }
+};
+
+// ✅ **Fetch Weather Data**
+function fetchWeatherByLocation(lat, lon) {
+    const apiKey = "6453684fd96817bb165fbd7ac20c745b";  // Replace with your OpenWeatherMap API key
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            console.log("Weather Data:", data);  // For debugging
+            if (data && data.sys) {
+                updateSunData(data);
+            }
+        })
+        .catch(error => console.error("Error:", error));
+}
+
+// ✅ **Update Sunrise, Sunset, and Day Length**
+function updateSunData(data) {
+    const sunriseTimestamp = data.sys.sunrise * 1000;  // Convert to milliseconds
+    const sunsetTimestamp = data.sys.sunset * 1000;
+
+    const sunriseDate = new Date(sunriseTimestamp);
+    const sunsetDate = new Date(sunsetTimestamp);
+
+    // 🌅 Format Sunrise and Sunset
+    const formatTime = (date) => {
+        let hours = date.getHours();
+        let minutes = date.getMinutes();
+        const ampm = hours >= 12 ? "PM" : "AM";
+        hours = hours % 12 || 12;  // 12-hour format
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        return `${hours}:${minutes} ${ampm}`;
+    };
+
+    document.getElementById("sunrise").innerHTML = formatTime(sunriseDate);
+    document.getElementById("sunset").innerHTML = formatTime(sunsetDate);
+
+    // ⏰ Calculate Length of Day
+    const dayLengthMs = sunsetTimestamp - sunriseTimestamp;
+    const hours = Math.floor(dayLengthMs / (1000 * 60 * 60));
+    const minutes = Math.floor((dayLengthMs % (1000 * 60 * 60)) / (1000 * 60));
+
+    document.getElementById("day-length").innerHTML = `${hours}h <span>${minutes}min</span>`;
+}
+</script>
+
+</body>
+</html>
